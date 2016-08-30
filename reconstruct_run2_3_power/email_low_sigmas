@@ -1,0 +1,510 @@
+# made on 08/02/2016, recording the communication about the parameters fitted for post-reconstruction P(k, \mu).
+
+07/28/2016
+Hi everyone,
+
+We discussed a bit longer with Yu and Zvonimir and this is a brief 
+summary -- please correct me where I misunderstood things.
+
+
+What confused us was that Sigma is close to 0 for low biased halos after 
+reconstruction in Fig. 8, but we now think this might be ok: 
+Reconstruction might just work perfectly for these halos because there 
+is not much stochasticity or scale-dependent bias. On top of that these 
+halos might have unrealistically high number density in the simulations 
+so that shot noise is not a limiting issue. Actual observations probably 
+have much lower number densities and higher shot noise, so that 
+reconstruction can't be as effective in that case and we don't see 
+reconstructions achieve Sigma=0 in real observations.
+
+For higher biased halos, stochasticity kicks in and we have higher shot 
+noise, so reconstruction is less effective and only gets us to Sigma=4 
+or so.
+
+ From this it seems like Fig. 8 would make sense. One way to better 
+check this interpretation would be to randomly subsample the low-biased 
+halos so that they all have the same number density. With this we can 
+disentangle the dependence on shot noise and stochasticity in the above 
+arguments (if reconstruction efficiency only depends on shot noise, then 
+Sigma should not change with bias any more). So maybe that's worth checking?
+
+It would also be useful to see Fig. 8 pre-reconstruction.
+
+
+Zvonimir also suggests multiplying the rhs of Eq. 6 by (1+b*k^2) to 
+improve the fit. This should cancel the C_G^2 at leading order and would 
+include some other magic that I didn't completely follow ;)
+
+Best,
+Marcel
+
+As Hee-Jong pointed out the propagator or cross-correlation coefficient 
+with initial conditions would of course be a much more stringent test if 
+reconstruction really works perfectly for the low-biased halo samples 
+(although I'm not sure how to do this with halos?).
+
+Best,
+Marcel
+
+Hi,
+
+>> What confused us was that Sigma is close to 0 for low biased halos after
+>> reconstruction in Fig. 8, but we now think this might be ok:
+>> Reconstruction might just work perfectly for these halos because there
+>> is not much stochasticity or scale-dependent bias. On top of that these
+>> halos might have unrealistically high number density in the simulations
+>> so that shot noise is not a limiting issue. Actual observations probably
+>> have much lower number densities and higher shot noise, so that
+>> reconstruction can't be as effective in that case and we don't see
+>> reconstructions achieve Sigma=0 in real observations.
+I see. But then, is there a reason for this scenario to work better
+than the subsampled dm, because we see Sigmas for dm is above Sigmas
+for low bias case?
+I think that the subsampled dm has a smaller relative shot noise than
+low bias halos.
+Would dm have more stochasticity than low-bias halos centers?
+
+Well, but I thought that velocities (displacements) for dm are much more nonlinear 
+than for any halos (for which linear displacement dispersion is a fairly good approximation). 
+That is why I would then think reconstruction does much less of a perfect job for DM 
+which then gives residual \sigma signal in the fit. 
+Does this make sense?
+ 
+ 
+ 
+>> For higher biased halos, stochasticity kicks in and we have higher shot
+>> noise, so reconstruction is less effective and only gets us to Sigma=4
+>> or so.
+>>
+>> From this it seems like Fig. 8 would make sense. One way to better check
+>> this interpretation would be to randomly subsample the low-biased halos
+>> so that they all have the same number density. With this we can
+>> disentangle the dependence on shot noise and stochasticity in the above
+>> arguments (if reconstruction efficiency only depends on shot noise, then
+>> Sigma should not change with bias any more). So maybe that's worth
+>> checking?
+Disentangling stochasticity and shot noise effect on Sigmas sounds
+interesting. Yes, we will check it.
+
+Maye actually, the residual sigma signal in the case of high bias halos
+is due to the scale dependent bias rather than the stochasticity.
+As Hee-Jong mentioned in eq 6 stochasticity would cancel
+but scale dependent bias would still multiply the residual wiggle spectra.
+As you say, subsampling might clarify this.
+ 
+>> It would also be useful to see Fig. 8 pre-reconstruction.
+Ok.
+>>
+>>
+>> Zvonimir also suggests multiplying the rhs of Eq. 6 by (1+b*k^2) to
+>> improve the fit. This should cancel the C_G^2 at leading order and would
+>> include some other magic that I didn't completely follow ;)
+You mean it will remove any scale-dependent bias effect on the damping factor?
+
+Yes, it is just the scale dependent bias peace, which is more relevant for massive halos  
+and which would also cancel in the broad band but it would still show up in just the wiggle part as well. 
+And right, it would take over at first order the current sigma effect, if one fits for "b".
+Hopefully one would then not need C_G^2 (since reconstruction should, I'd assume, 
+work well for halos, especially massive ones).
+What do you think?
+
+Best,
+Zvonimir
+
+
+Hi,
+
+ >> It would also be useful to see Fig. 8 pre-reconstruction.
+Ok.
+>>
+>>
+>> Zvonimir also suggests multiplying the rhs of Eq. 6 by (1+b*k^2) to
+>> improve the fit. This should cancel the C_G^2 at leading order and would
+>> include some other magic that I didn't completely follow ;)
+You mean it will remove any scale-dependent bias effect on the damping factor?
+
+Yes, it is just the scale dependent bias peace, which is more relevant for massive halos  
+and which would also cancel in the broad band but it would still show up in just the wiggle part as well. 
+And right, it would take over at first order the current sigma effect, if one fits for "b".
+Hopefully one would then not need C_G^2 (since reconstruction should, I'd assume, 
+work well for halos, especially massive ones).
+What do you think?
+
+thinking about it, it might be quite useful to compare Fig 8 pre-reconstruction 
+and post-reconstruction. 
+In both cases, I think the analogous formula to eq 6 should work, something like
+
+\hat P_\wig - \hat P_\now = b^2 (1 + b_scale k^2 ) G^2 (P_lin - P_sm) C_G^2
+
+where b and b_scale are bias parameters and the difference of pre- and post-reconstruction
+should only be in C_G^2, where:
+
+pre-reconstruction  C_G^2 = exp[ - k^2 G^2 \sigma^2 ], where it should be that \sigma^2 ~ 30 [Mps/h]^2
+post-reconstruction  C_G^2 = 1
+
+If the picture is consistent, fits for b and b_scale in both pre and post-reconstruction cases should be similar. 
+Although, higher nonlinearities might at some point ruin this picture,
+or reconstruction could effect b_scale to some extent, I don't know.... but might be interesting to see.
+
+Zvonimir
+ 
+
+
+08/02/2016:
+Thank you all for the skype calls!
+
+So, this is my summary of the current to-dos.
+
+1. Yu, please check the status of the simulations and send us a set
+with initial conditions. Sorry for pestering you.
+I am sure that you will be quickly swamped by other urgent tasks, so
+please let me know a rough estimate of the days needed to send us, so
+that I can send you a reminder email (i.e., 'a bugging email') after
+that. :)
+
+
+2. For the differences in Sigmas before and after subtracting shot
+noise, I am still very puzzled by this.
+I am personally pursuing this at least to understand exactly what
+causes the difference. Again, averaging (over 20 sets) after division
+after averaging (kbin) may have something to do with it.
+
+3. For the reason, I feel more inclined to use \hat P_\wig - \hat
+P_\now which is probably more stable against the averaging and sample
+variance cancelation permutations.
+So, we want Figure 8 pre and post reconstruction figures. Jerry, could
+you please produce this?
+We will also try to generate a proper way to plot signal to noise of
+\hat P_\wig - \hat P_\now.
+My suggestion is "sigma{(\hat P_\wig - \hat P_\now)/b^2G^2Psm+1}".
+
+4. For eq (6), we want (1+b k^2) as a multiplication factor based on
+Zvonimir and Marcel's suggestion. I agree that post-reconstruction can
+give C_G^2=1.
+Thinking back the propagators post-reconstruction, they were deviation
+from the Gaussian shape, especially giving ~1 near small k compared to
+Gaussian.
+Since we have a very small noise, this deviation may be more visible?
+Also Zvonimir thinks that it is possible that dm reconstruction can be
+worse than low bias case due to the nonlinearities in the velocity
+field (indeed, we are only taking the centers of halos for these halo
+catalogs).
+
+5. As a function of bias, we believe that the reconstruction will be
+less effective for high mass halos, partially due to stochasticity and
+shot noise. Marcel suggested to setting the shot noise the same to
+separate the shot noise effect, which we certainly should try.
+Zvominir thinks that it will be mainly due to the scale dependent bias
+once we adopt eq (6), which will be tested in #4.
+
+please let me know if I missed something else.
+Hee-Jong
+
+
+08/17/2016
+From Florian,
+Hi Jerry
+Thanks for sending the pdf. Would you mind writing a paragraph or two about (1) What exactly you were testing, (2) what you expected from this test and (3) what your results imply for the next steps of your analysis. I think this would be very helpful for all of us.
+thanks a lot Jerry
+best 
+Florian
+
+
+08/17/2016
+From Zvonimir
+Hi Jerry and all,
+
+thanks for the notes, it is becoming quite exciting :-) !
+
+I have a couple of questions/thoughts to ask/share;
+
+- I'm a bit confused about the meaning of \alphas, I guess 
+I don't understand how does model eq (1) depend on it.
+Could you quickly define/explain it somewhere?
+
+- my understanding is that all the plots are in real space; 
+so wouldn't it be opportune to put the constraints so that 
+\Sigma_z = \Sigma_xy and similar for \alphas?
+
+For both \Sigmas it is kind of nice that they look very similar 
+in all cases, as we would expect. 
+But still, my concern is that since these differences, although tiny, 
+appear in the exponent, and so might, in effect, 'bias' the rest 
+of the constraints. 
+Why not just simply use C_G = Exp[ - k^2 \Sigma^2 / 2]? 
+(but then again I don't know how \mu is beeing handled in the fit... )
+
+- Fig 2 and 4 suggest that in model 3 there is some degeneracy 
+between the fits for \Sigma and b_scale since at leading scale 
+dependence they both give ~ (1 + ( - \sigma^2/2 + b_scale) k^2 ).
+This suggests that one could not fit robustly for both \sigma^2 and b_scale 
+at the same time, and so I'd suspect that's why there is these 'noisy' 
+compared to model 2 and 1. Does this make sense to you?
+
+On the other hand, we have good reason (from linear theory) to expect that 
+\Sigma^2/2 ~ G^2 30 (Mpc/h)^2 (pre-reconstructed), so maybe it would make 
+sense to have model 3 such that one fixes \sigma^2/2 and then fits for b_scale.
+Similar, \Sigma^2/2 value for the post-reconstructed case should be much smaller, 
+almost zero but perhaps now quite (as these plots suggest), 
+I'm not sure what exactly, maybe ~ G^2 5 or 6 (Mpc/h)^2.
+
+- Could we have somewhere the values of the growth rate G for these 
+three redshifts so that we might see if some of this parameters (like b_scale 
+or \Sigmas) scale as some power of G?
+
+-  I find a very interesting part of Fig 4 the top right panel; scaling seems to be
+very consistent qualitatively with what we would expect; 
+only slightly annoying bit is the relatively strong redshift dependence. 
+It would be very interesting to see if one could reduce this dependence (i.e. make the 
+b_scale lines on top of each other) with using some small and constant \Sigma 
+-- this is then similar to the earlier comment.
+
+- last but not least; what should I conclude from the subsample results? 
+Does this convince us that we can neglect the stochastic part in this difference statistic? 
+--  Figure 3 would suggest so, at least for the constant stochastic peace,
+(what about the top left panel? -- there is some scatter in this panel, but nowhere else)
+
+I guess there is only one mass bin for which you plot these subsamples?
+If above is true (that stochasticity has been mostly cancelled) it might be 
+quite instructive to check if the same thing happens for the higher bias cases 
+-- where we would expect statistic effects to be increasingly more relevant.
+
+What do you guys think?!
+Best,
+Zvonimir
+
+
+08/18/2016
+From Yu,
+Hi,
+
+Finally!
+
+Here are two folders:
+
+/global/project/projectdirs/cosmosim/lbl/yfeng1/baoshift/run4/00000400-
+10/IC/LinearDensity
+
+and 
+
+/global/project/projectdirs/cosmosim/lbl/yfeng1/baoshift/run4/00000400-
+10/fpm_1.0000/DensityFOFAll
+
+Each contains four files numbered 000000, 000001, ....
+
+You can read them in one after another as single precision floating point numbers, and end up having 256*256*256 numbers. Then you can treat them as a 256x256x256 array.
+
+The normalization may be different in two cases. You can simply renormalize them. 
+
+Could you see if you can drive your propagator code with this? do you also want the DM on a low res grid?
+
+After the fixes are merged to the default nbodykit on NERSC, I can hand over the scripts for you or Jerry to run them at any resolution you like.
+
+Best,
+
+- Yu
+
+08/20/2016
+Hi, 
+
+I didn't understand what you mean by 'zeros'.
+We want two alphas are the same within statistical errors and two
+Sigmas are the same within the statistical errors.
+I think that this is not any more than checking if the code is doing
+something expected.
+(e.g., If we have a limited mesh resolution, aliasing effect will be
+angle-dependent in this cubic space and we could get an artificial
+angle dependence on small scales even in real space. Obviously, for
+Yu's simulations, we have enough mesh resolution so that we don't need
+to worry about this.)
+But we don't expect any of these to be zero, right?
+Sigmas won't be zero at low redshift.
+I must be missing something here.
+
+Ah yes, sorry! I was too vague here (it even took me a minute to figure out what I was trying to say)!
+I guess I was just referring to the plots of \alphas in Jerrys notes, which we would like to be zero (since 
+one is beeing subtracted) in the ideal case. 
+And yes, sigmas I mentioned as a similar case, but we would not expect them to be zero (even for the 
+reconstructed case I kind of like that your fits give small but nonzero values)!
+I think I'm on the same page now here, thanks!
+ 
+So, this is the reason why we don't need to introduce the same damping 
+factor for the no-wiggle case?
+
+In the no-wiggle case, the IR resummation is a 'redundant operation', i.e. 
+the regular PT captures then the most of the IR modes. It is only once some 
+localised feature appears (that, when it evolves, in PT has to be described with the 
+derivative expansion) on the large scales that it makes sense to do the IR resummation. 
+For example, if one would take the full (opposed to the approximated that we are useing) 
+IR resummation formalism, as described in e.g. 1404.5954 (or appendix 1506.05264), 
+and still perform the IR resummation only on the no-wiggle power spectrum one would 
+just get back the same no-wiggle power spectrum.
+That is because the IR resummation procedure in this full formalism corresponds to convolving 
+our corresponding linear correlations function (with no BAO bump) with some kernel/filter that 
+depends on the displacements coming from long modes only, and so if one does not have 
+a feature where the BAO peak should be this kernel basically does nothing since 
+it runs over a very slowly varying (compared to the kernel scale) function.
+ 
+It seems that this is consistent with Eisenstein et al. 2007?
+I agree with your estimation.
+
+O, I see, I should also check this out! Embarrassingly, I was not aware of this.
+ 
+I guess that we have two options:
+1.  fit for Sigma using DM and then fit for b_scale for the biased case?
+2. Or as you said,  just fix Sigma based on the theory and fit for the b_scale.
+
+A yes, makes sense!
+One option (version of 2) would also to be to fix Sigma to a constant 
+but to vary this constant then slowly and refit each time to see if one 
+could get a value for which b_scale would be only a function of b_0 
+and not on redshift explicitly, i.e. get the tree redshift curves in plot 4 to overlap.
+
+I think that Jerry plans to test subsampled biased cases as well. We
+can doublecheck once it is done.
+
+Yea, it would be great to see how this works out for halos!
+ 
+In redshift space, we expect (1+beta*mu^2(1-S(k)) factor multiplied to 
+the propagator due the reconstruction operation we do.
+I have been thinking whether or not we have to include this factor
+only for Pwiggleonly or both Pwiggle and Pnowiggle.
+In terms of this term affecting the amplitude of the redshift-space power, 
+we had better to include this both for Pwiggle and Pnowiggle so that
+the net effect will cancel out for Pwiggleonly. But then, this term
+shows up in the propagator calculation so that Pwiggleonly may be
+affected by (1+beta*mu^2(1-S(k))* Exp[-kxy^2 \sigmaxy/2^2-kz^2 \sigmaz/2^2] rather
+than Exp[-kxy^2 \sigmaxy/2^2-kz^2 \sigmaz/2^2] alone.
+What is your thought? It may depend on if (1+beta*mu^2(1-S(k))
+corresponds to IR contribution or not?
+
+Ok frankly I'd need to think a bit what happens in redshift space,
+but given the simplicity of our model currently, it shouldn't be too hard.
+Naively I'd expect that whatever operation (like IR resummation or 
+reconstruction) we do on P_wiggle we need to do also on 
+P_nowiggle, although for the latter it might be redundant, and then look at the difference of this. 
+The question if the scale dependent bias shows up in higher 
+Keiser terms is very interesting, somehow I'd expect that it should, 
+but I cant really justify this yet.
+Of course, if we have the scale-dependent bias in momentum (velocity) 
+field, then yes. I guess you guys are in a good position to test this 
+(assuming we would be able to handle the FoG)!
+
+If I'd have to pull a model out of the hat, I'd do something like:
+
+P_wiggleonly[RSD] / P_wiggleonly = 
+            b0^2 (1 + b_scale0 k^2/k_L^2 ) Exp[- k^2 \Sigma_0/2]
++  f b0\mu^2 (1 + b_scale2 k^2/k_L^2 ) Exp[- k^2 \Sigma_2/2]
++  f^2 \mu^4 (1 + b_scale4 k^2/k_L^2 ) Exp[- k^2 \Sigma_4/2] + O(\mu^6)
+(note that this is really without any pencil work.. so might be quite off)
+
+where now b_scale2 and b_scale4 might be suppressed but maybe not, not sure, interesting to see what happens.
+Depending also I guess how we interpret FoG effects here,
+we might be able to say something about the relation of \Sigma_2 and \Sigma_4.
+Doing some resummtions in \mu^n it looks a bit similar to what you write above.
+
+Ill try to play a bit to look at this how earlier model extends to the rsd 
+so we can crosscheck the models we come up with.
+
+Best,
+Zvonimir
+
+08/25/2016
+Hi,
+sorry for a slow response. 
+
+Thanks for the new plots Jerry, results look very nice! 
+Things are moving towards the direction we were expecting! :-)
+Below are couple of more comments:
+
+Pre-reconstructed case:
+
+Fixed sigma plots are cool!
+It is very nice to see also that the best sigma for z=0.0 is ~ 7.8 
+exactly what one would get from the formula we have discussed above
+\Sigma_Theory^2/2 = 1/3 \int d^3 q P_lin/q^2 (1 - j_0[ R_bao * q] ) ~ 30 (Mpc/h)^2 
+for z=0, and for R_bao = 110 [Mpc/h], and 
+the prediction is much worse if you just use the linear value for sigma!
+This formula should be ok for all redshifts, so given your numbers 
+I would just use for \Sigmas numbers from the formula above:
+{7.836, 5.748, 4.773}, for z=0,0.5 and 1 respectively
+and see how these affects b_scale, 
+I'd expect we could get even better scale dependence. 
+
+Also, one nontrivial thing (which I'm very happy to see!) is that 
+b_scale values here are of order O(1) and not 10 or higher,
+which tells us that the PT (Taylor) expansion in b_scale 
+makes kind of sense, i.e. we are being self-consistent!
+
+But also, \alpha in Fig 2 for z=0 seems much more prominent than 
+for the other two redshifts.
+I'm wondering if this could affect somehow the strange bump (at b1~1.5) 
+we are seeing in b_scale for the z=0 black line.
+Could you remake these plots by imposing \alpha to be one in all cases?
+It would be very interesting to see how/if it affects fits for other parameters (b_scale)
+(you guys might already know this though).
+
+Post-reconstructed case:
+
+So I think we can do a very similar analysis as for the pre-reconstructed case. 
+We just need to figure out what the right \Sigma should be in this case... 
+having in mind formula above and taking into account the reconstruction. 
+But this now depends on the details of the reconstruction.
+Could you guys tell us how exactly do you do the reconstruction 
+(is it the same as in Marcel+++ paper)?
+Are you using the final halo field and some smoothing on top of it? 
+
+For example, if the unsmoothed linear field would have been used for the 
+reconstruction (this would be some inverse Zel'dovich case), I believe that 
+a good estimate for the Sigma reconstructed, in this case, would be;
+\Sigma_rec = {2.84, 2.09, 1.73} for z=0,0.5 and 1 respectively.
+These values have been obtained from: 
+\Sigma_rec^2 = \Sigma_Linear^2 -  \Sigma_Theory^2
+where  \Sigma_Theory is the formula from above, and \Sigma_Linear 
+is used here since this is the value for the displacement dispersion in Zel'dovich case.
+These are quite smaller than what you are currently using I believe, and if some 
+smoothing for the reconstruction field is used, these numbers should be even smaller.
+
+Using smaller values for \Sigma_rec seems good direction again since I think this would 
+reduce the b_scale in the reconstructed case compared to the current values (I say this 
+since b_scale now gives mostly large (some of O(10)) positive numbers, and previously in 
+the case when a model with \Sigma=0 was used, it gave very negative values). 
+Ideally, I'd say that reconstruction should not affect the b_scale too much (what 
+to you think Hee-Jong?), and so we should expect the b_scale plots to look quite similar 
+in both pre- and post-reconstructed case.
+If this happens I believe we have a very strong confirmation of the physical 
+picture here, which I find quite exciting! :-)
+
+Might be good to set \alpha to one here also, just in case (it can be released later on)!
+
+Let me know what do you think. 
+Im quite excited to see how it works out!
+
+P.S. @Hee-Jong: yes, in the earlier email, when discussing the RSD 
+model it was all for the pre-reconstructed case. But as in real space, 
+if we can expect that the bias_scale does not change much in reconstruction 
+the model would take the same form, I think. Just the meaning (value) of \Sigmas 
+should be reinterpreted/changed.
+Or do we expect some qualitative difference here, that Im missing, when moving to redshift space?
+
+Best,
+Zvonimir
+
+
+08/29/2016
+Jerry,
+
+Figure 2 look suspiciously similar to the bottom panel of Figure 3.
+You fix alphas=1 which are many sigmas away from the best fit alphas
+(especially for the left panel), but your bscale and b0 didn't
+change...
+Can you please doublecheck? It maybe that they have no cross-correlations.
+Can you plot an alphas vs bscale scatter plot to confirm that there is
+no cross correlations?
+
+Also in the beginning of the note, please put short sentences
+1. what you tested
+2. What result we (Zvonimir) expect
+3 what we got.
+
+Hee-Jong

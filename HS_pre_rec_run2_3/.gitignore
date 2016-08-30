@@ -1,0 +1,9 @@
+# ignore files listed below
+.DS_Store
+*/
+*.pyc
+*.pyf
+*.so
+*.log
+*.sh
+

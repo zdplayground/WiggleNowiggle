@@ -1,0 +1,53 @@
+made on 06/30/2016, deal with reconstructed P(k, \mu) of run2 and run3 simulations.
+Similar process as that in reconstruct_run2_power.
+07/09/2016
+Made the code plot_Pobs_Plin.py to plot P_obs/(P_lin*G^2b^2), (P_obs-P_shotnoise)/(P_lin*G^2b^2) and (P_obs-A*G^2*b^2)/(P_lin*G^2b^2).
+
+Note:
+run2_3_ALL_params_fitted_mean_dset: stores fitted parameters of true fof P(k, mu)_wig/P_now post reconstruction. Fitting model doesn’t have mode
+  coupling constant A.
+
+params_obs_mc_fitted_mean_ksorted_mu_masscut: stores fitted parameters of observed P(k, mu)_wig/P_now post reconstruction. Fitting model has mode coupling
+  constant A. mc means mode coupling.
+
+run2_3_fof_Pk_obs_true_2d_wnw_mean_ALL_ksorted_mu_masscut: P(k,mu) with/without shot noise post reconstruction. now, wig, wnw.
+
+run2_3_fof_Pk_obs_true_2d_wnw_mean_DD_ksorted_mu_masscut: P(k,mu) with/without shot noise before reconstruction. 
+
+07/10/2016
+Needs to ask Hee-Jong whether P(k) in the data files from her reconstruction code is P_obs or P_true. (I think it’s P_obs.) — Yes, it’s P_obs, note on 08/07/2016.
+
+07/12/2016
+Things to do for the following two days:
+1. Plot fitted P(k, mu) after knowing fitting parameters before and after reconstruction at a=1.0 with bias=1.0 and 3.0 respectively. Also show delta_chi^2 value.
+2. Show mean P(k) before and after reconstruction in real and redshift space with bias=1.0, 3.0 at a=1.0.
+3. Check A constant.
+4. Do the similar fitting with the constant A included for P(k, \mu) before reconstruction. Show the result (\Sigma_xy,z; fitting P(k,\mu)).
+
+07/16/2016
+Folder ALL_figs_barn_mean and ALL_figs_barn_mean_mc stores figs with fitted parameters for FoF observed (with shot noise) and Sub true (without shot noise).
+ALL_figs_barn_mean_mc is for Pk including mode-coupling constant.
+ 
+
+08/04/2016
+The following work:
+1. Get the covariance matrix of the mean pre-reconstruction P_wig/P_now from Hee-Jong’s code.
+2. Add (1+b_scale * k^2) in the fitting model.
+
+08/20/2016
+Note that the code multiplot_bscale_mean.py is used to plot \alpha, \Sigma, b_0 and b_scale obtained from the fitting model 
+\hat{P}_wig-\hat{P}_now = G^2 b^2 (P_lin - P_sm)C^2_G (1+b_scale * k*k).
+
+The folder params_DD_wig-now_b_bscale_fitted_mean_dset_broad_prior stores parameters fitted with larger prior ranges. The result is consistent with those in params_DD_wig-now_b_bscale_fitted_mean_dset.
+ 
+08/21/2016
+In the code multiplot_alpha_Sigma_isotropic.py, we set N_walkers 100, N_walkersteps 20000 and burn_in starting from 1000 in sampler.chain, the result is consistent with the
+case  N_walkers 80, N_walkersteps 10000 and burn_in starting from 5000 in sampler.chain.
+
+08/26/2016
+Note something hasn’t been done yet since last meeting with Hee-Jong. 
+1. Generate sampled biased FoF samples (only for z=0.).
+Get the same number of halos for low-biased cases, which means taking the high-biased case as the reference.
+
+2. Calculate reduced \chi^2 for P_wig/P_now with different cases. \sigma_{alpha} for Pwig/Pnow and (P_wig-P_now).
+
