@@ -6,4 +6,4 @@ a lot, which could decrease the number of simulations ~10 times.
 The folder HS_pre_rec_run2_3 stroes code for dealing with pre-reconstruction power spectrum generated from Hee-Jong's code. And the folder
 reconstruct_run2_3_power for post-reconstruction.
 
-We are still doing the study. Hope us with good luck!
+We are still doing the study. Wish us good luck!
