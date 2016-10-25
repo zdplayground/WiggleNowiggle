@@ -1,6 +1,7 @@
 # Copy the code sub_cov_Pk_rec_2d_ksorted_shotnoise.py on 07/14/2016. This code is corresponding to cov_Pk_wnw_diff_rec_2d_ksorted_shotnoise_masscut.py.
 # 1. Modify it to get the mean subsample (P_wig-P_now)/G^2b^2 of run2 and run3 together.
-
+# 2. It has the function to get the mean (P_wig-Pnow) and its convarince.
+#
 #!/usr/bin/env python
 import os
 import time
@@ -137,7 +138,7 @@ def Pk_wnw_diff_divideby_Psm():
 
 ####--------------------------------------------------------------------------------------------------------------####
 ####--------------------- calculate the mean P_wig-P_now and its covariance matrix -----------------------####
-#-- This is form MCMC fitting with both the bias parameter b and b_scale, as Zvonimir suggested.
+#-- This is for MCMC fitting with both the bias parameter b and b_scale, as Zvonimir suggested.
 def Pk_wig_minus_now():
     rec_id = 1          # rec_id=0: before reconstruction; rec_id=1: after reconstruction
     odir_prefix = './run2_3_'
@@ -151,6 +152,7 @@ def Pk_wig_minus_now():
                     k_obs, Pk_wig_obs, Pk_wig_true = read_fftPk_file(dir0, z_id, rec_id, space_id, sim_wig[run_id][1], sim_seed_id)
                     
                     Pk_wnw_diff_obs = Pk_wig_obs-Pk_now_obs       # I think it's fine either using obs or true because of subtraction.
+                    ##Pk_wnw_diff_obs = Pk_wig_true - Pk_now_true     # Test it whether it influences the fitting results or not.
                     Pk_mwnw_diff_obs = np.vstack([Pk_mwnw_diff_obs, Pk_wnw_diff_obs])
             
             Pk_wnw_diff_obs_mean = np.mean(Pk_mwnw_diff_obs, axis=0)
@@ -165,7 +167,7 @@ def Pk_wig_minus_now():
             header_line = ' After sorting k, the mean (P(k)_wig-P(k)_now) in 2d (k, mu) case\n     k       mu       Pk_wnw_diff_obs_mean'
             write_output(odir_prefix, var_name, header_line, np.array([k_p, mu_p, Pk_wnw_diff_obs_mean]).T, filename)
             
-            var_name = 'sub_Cov_Pk_2d_wnw_mean_{}_ksorted_mu/'.format(rec_dirs[rec_id])
+            var_name = 'sub_Cov_Pk_2d_wnw_{}_ksorted_mu/'.format(rec_dirs[rec_id])
             filename = "{}kave{}.wig_minus_now_mean_sub_a_{}.dat".format(rec_fprefix[rec_id], sim_space[space_id], sim_a[z_id])
             header_line = ' Cov(P_obs_2d_wnw_diff(k1), P_obs_2d_wnw_diff(k2)), (wnw_diff means Pwig-Pnow, 2d: k, mu; and k1, k2 are the k bin indices).'
             write_output(odir_prefix, var_name, header_line, Cov_Pk, filename)
