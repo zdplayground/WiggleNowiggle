@@ -7,3 +7,6 @@ The folder HS_pre_rec_run2_3 stroes code for dealing with pre-reconstruction pow
 reconstruct_run2_3_power for post-reconstruction.
 
 We are still doing the study. Wish us good luck!
+
+#--08/24/2018
+The project has been finished.
